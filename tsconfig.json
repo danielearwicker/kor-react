@@ -14,7 +14,6 @@
         "!./node_modules/**/*.ts"
     ],
     "files": [
-        "./built/index.d.ts",
         "./index.ts",
         "./typings/kor-react/kor-react.d.ts",
         "./typings/kor/kor.d.ts",
