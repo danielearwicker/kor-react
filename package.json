@@ -2,9 +2,9 @@
   "name": "kor-react",
   "version": "0.1.0",
   "description": "Utilities for consuming kor observables in React components",
-  "main": "index.js",
+  "main": "built/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublish": "tsc --module commonjs --outDir built index.ts typings/react/react.d.ts typings/kor/kor.d.ts"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/danielearwicker/kor-react",
   "dependencies": {
-    "kor": "^0.1.1"
+    "kor": "^0.1.2",
+    "react": "^0.13.0"
   }
 }
