@@ -1,0 +1,26 @@
+{
+  "name": "kor-react",
+  "version": "0.1.0",
+  "description": "Utilities for consuming kor observables in React components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danielearwicker/kor-react.git"
+  },
+  "keywords": [
+    "react",
+    "kor"
+  ],
+  "author": "Daniel Earwicker <dan@earwicker.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danielearwicker/kor-react/issues"
+  },
+  "homepage": "https://github.com/danielearwicker/kor-react",
+  "dependencies": {
+    "kor": "^0.1.1"
+  }
+}
