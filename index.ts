@@ -5,39 +5,43 @@ function ignore() {}
 
 export class Komponent<P, S> extends React.Component<P, S> {
 
-  private _komponent_internals: {
-    rendered?: React.ReactElement<any>;
-    listener?: Kor.Computed<void>;
-    subscription?: Kor.Subscription;
-  } = {};
+    private _koCachedInternals: {
+        rendered?: React.ReactElement<any>;
+        listener?: Kor.Computed<void>;
+        subscription?: Kor.Subscription;
+    };
 
-  componentDidMount() {
-
-    var internals = this._komponent_internals;
-
-    if (!internals.listener) {
-      internals.listener = kor.pureComputed(() => {
-        internals.rendered = this.renderKor();
-        this.forceUpdate();
-      }).extend({ throttle: 1 });
+    private _koInternals() {
+        if (!this._koCachedInternals) {
+            this._koCachedInternals = {};
+        }
+        return this._koCachedInternals;
     }
 
-    internals.subscription = internals.listener.subscribe(ignore);
-  }
+    componentDidMount() {
+        var internals = this._koInternals();
+        if (!internals.listener) {
+            internals.listener = kor.pureComputed(() => {
+                internals.rendered = this.renderKor();
+                this.forceUpdate();
+            }).extend({ throttle: 1 });
+        }
 
-  componentWillUnmount() {
-    var internals = this._komponent_internals;
-    internals.subscription.dispose();
-    internals = null;
-  }
+        internals.subscription = internals.listener.subscribe(ignore);
+    }
 
-  render() {
-    var internals = this._komponent_internals;
-    return (internals && internals.rendered) || null;
-  }
+    componentWillUnmount() {
+        var internals = this._koInternals();
+        internals.subscription.dispose();
+        internals.subscription = null;
+    }
 
-  // Override this instead of render()
-  renderKor() {
-    return <React.ReactElement<any>>null;
-  }
+    render() {
+        return this._koInternals().rendered || null;
+    }
+
+    // Override this instead of render()
+    renderKor() {
+        return <React.ReactElement<any>>null;
+    }
 }
