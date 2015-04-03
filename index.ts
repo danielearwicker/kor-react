@@ -3,7 +3,7 @@ import React = require('react');
 
 function ignore() {}
 
-export class Komponent<P, S> extends React.Component<P, S> {
+export class Komponent<P> extends React.Component<P, {}> {
 
     private _koCachedInternals: {
         rendered?: React.ReactElement<any>;
