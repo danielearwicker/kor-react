@@ -4,7 +4,7 @@ declare module "kor-react" {
 
     import React = require('react');
 
-    export class Komponent<P, S> extends React.Component<P, S> {
+    export class Komponent<P> extends React.Component<P, {}> {
         componentDidMount(): void;
         componentWillUnmount(): void;
         render(): React.ReactElement<any>;
